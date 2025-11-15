@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz 14</title>
+<style>
+    body {
+        background: #ffe6f2;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        padding-top: 40px;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        color: #d63384;
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    /* --- CORAZONES FLOTANDO --- */
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        font-size: 30px;
+        animation: floatUp 6s linear infinite;
+        opacity: 0.8;
+    }
+    @keyframes floatUp {
+        0% { transform: translateY(0); opacity: 0.8; }
+        100% { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    /* --- SOBRE --- */
+    .envelope {
+        width: 260px;
+        height: 180px;
+        background: white;
+        border: 2px solid #ff7fbd;
+        margin: 0 auto;
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px #ffabcd;
+    }
+
+    .flap {
+        width: 100%;
+        height: 90px;
+        background: #ffb3d9;
+        position: absolute;
+        top: 0;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        z-index: 5;
+    }
+
+    /* --- CORONA REAL (SVG) --- */
+    .crown {
+        width: 130px;
+        position: absolute;
+        bottom: -180px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 2s ease;
+        filter: drop-shadow(0 0 10px #ffcf33);
+    }
+
+    .show .crown {
+        bottom: 20px;
+    }
+
+    /* --- MENSAJE FELIZ 14 --- */
+    .message {
+        opacity: 0;
+        font-size: 40px;
+        margin-top: 20px;
+        color: #d63384;
+        font-weight: bold;
+        text-shadow: 0 0 10px white;
+        transition: opacity 2s ease;
+    }
+
+    .show-message {
+        opacity: 1 !important;
+    }
+
+    /* --- CARTA --- */
+    .carta {
+        margin: 30px auto;
+        width: 70%;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        border: 3px solid #ff99c8;
+        font-size: 18px;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        box-shadow: 0 5px 15px #ffabcd;
+    }
+
+    /* --- BOTÓN --- */
+    button {
+        margin-top: 20px;
+        padding: 12px 25px;
+        background: #ff4da6;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #ff1f90;
+        transform: scale(1.05);
+    }
+</style>
+</head>
+<body>
+
+<h1>💖 Sorpresa para ti en este 14 💖</h1>
+
+<!-- SOBRE -->
+<div class="envelope" id="envoltorio">
+    <div class="flap"></div>
+
+    <!-- CORONA REAL (SVG) -->
+    <img src="data:image/svg+xml;utf8,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+        <path fill='%23ffcc00' d='M4 48l8-28 12 18 8-22 8 22 12-18 8 28z'/>
+        <circle cx='14' cy='20' r='4' fill='%23ffea4d'/>
+        <circle cx='32' cy='12' r='4' fill='%23ffea4d'/>
+        <circle cx='50' cy='20' r='4' fill='%23ffea4d'/>
+        <rect x='4' y='48' width='56' height='10' rx='2' fill='%23ffb300'/>
+    </svg>"
+    class="crown">
+</div>
+
+<div class="message" id="mensaje">Feliz 14 mi princesa 💘</div>
+
+<button onclick="mostrar()">Abrelo abrelo</button>
+
+<!-- CARTA PERSONALIZABLE -->
+<div class="carta">💗Ten tu coronita mi vida eres la mejor perdon por no darte una real pero te hice este detallito
+muy lindo solo para mi abejita hermosa te amo mucho mi mesita hermosa gracias por estar sieempre y ser la mejor mujer 
+del muuuundooooooo💗
+</div>
+
+<script>
+function mostrar() {
+    document.getElementById("envoltorio").classList.add("show");
+    document.getElementById("mensaje").classList.add("show-message");
+
+    // Crear corazones flotando 🩷
+    for (let i = 0; i < 15; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDelay = Math.random() * 5 + "s";
+        document.body.appendChild(heart);
+    }
+}
+</script>
+
+</body>
+</html>
